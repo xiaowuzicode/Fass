@@ -22,6 +22,7 @@ jobs:
           hexo generate
           
       # 配置oss环境
+      - name: config ossutil
       - uses: manyuanrong/setup-ossutil@v1.0
         with:
          endpoint: "oss-cn-beijing.aliyuncs.com"

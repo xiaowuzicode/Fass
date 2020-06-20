@@ -28,5 +28,8 @@ jobs:
          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
          access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
           
-      - name: 同步dist文件到oss上
-        run: ossutil cp public/ oss://aganblog/ -rf
+     # 把生成好的html上传到oss
+      - name: upload to oss
+        run: |
+          ossutil rm oss://aganblog/ -a -r -f
+          ossutil cp public oss://aganblog -r -f

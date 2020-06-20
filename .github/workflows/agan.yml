@@ -32,4 +32,4 @@ jobs:
       - name: upload to oss
         run: |
           ossutil rm oss://aganblog/ -a -r -f
-          ossutil cp oss://aganblog -r -f
+          ossutil cp pubilc oss://aganblog/ -r -f

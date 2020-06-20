@@ -30,4 +30,4 @@ jobs:
           
       # 把生成好的html上传到oss
       - name: upload to oss
-        run: ossutil cp public/ oss://aganblog/ -rf
+        run: ossutil cp public/ oss://aganblogs/ -rf

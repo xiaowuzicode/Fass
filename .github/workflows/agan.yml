@@ -16,8 +16,9 @@ jobs:
       # 配置hexo环境,并build成html
       - name: Build Blog
         run: |
-          npm install
-          npm install -g hexo-cli
+          npm i -g hexo-cli
+          npm i
+          hexo
           hexo generate
           
       # 配置oss环境
@@ -32,4 +33,4 @@ jobs:
       - name: upload to oss
         run: |
           ossutil rm oss://aganblog/ -a -r -f
-          ossutil cp pubilc/ oss://aganblog/ -r -f
+          ossutil cp pubilc oss://aganblog -r -f

@@ -1,5 +1,5 @@
 # deploy hexo blog to aliyun oss
-name: Deploy Blog
+name: MainWorkflow
 on:
   push:
     branches: [master]
@@ -11,21 +11,19 @@ jobs:
       # 配置node环境
       - uses: actions/setup-node@v1
         with:
-          node-version: "12"
+          node-version: "12.x"
           
       # 配置hexo环境,并build成html
-      - name: Install dependencies
+      - name: Build Blog
         run: |
-          npm i -g hexo-cli
-          npm i
-          hexo
+          npm install
+          npm install -g hexo-cli
           hexo generate
           
       # 配置oss环境
-      - name: config ossutil
-        uses: manyuanrong/setup-ossutil@v1.0
+      - uses: manyuanrong/setup-ossutil@v1.0
         with:
-         endpoint: "oss-cn-hongkong.aliyuncs.com"
+         endpoint: "oss-cn-beijing.aliyuncs.com"
         # 使用我们之前配置在secrets里面的accesskeys来配置ossutil
          access-key-id: ${{ secrets.ACCESS_KEY_ID }}
          access-key-secret: ${{ secrets.ACCESS_KEY_SECRET }}
